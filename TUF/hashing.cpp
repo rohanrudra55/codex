@@ -1,5 +1,5 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include "alpha.h"
+
 int solution() {
 	int n;
 	cin >> n;
