@@ -1,1 +1,0 @@
-{"name":"Local: checkforprime","url":"/Users/alpha/Documents/Github/Codex/TUF/checkforprime.cpp","tests":[{"id":1687615209022,"input":"5","output":"1"},{"id":1687615214226,"input":"25","output":"0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/alpha/Documents/Github/Codex/TUF/checkforprime.cpp","group":"local","local":true}

@@ -1,4 +1,5 @@
-#include"alpha.h"
+#include <bits/stdc++.h>
+using namespace std;
 
 int isPrime(int N)
 {
@@ -8,17 +9,20 @@ int isPrime(int N)
         if (N % i == 0)
         {
             c++;
-            if ((N/i) != i)
+            if ((N / i) != i)
                 c++;
         }
     }
-    if(c==2) return 1;
-    else return 0;
+    if (c == 2)
+        return 1;
+    else
+        return 0;
 }
 
-int solution(){
+int solution()
+{
     int n;
-    cin>>n;
-    cout<<isPrime(n);
+    cin >> n;
+    cout << isPrime(n);
     return 0;
 }

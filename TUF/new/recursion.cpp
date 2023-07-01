@@ -44,20 +44,23 @@ void palindrome(int i, string arr)
         if (arr[i] == arr[arr.length() - 1 - i])
             palindrome(i + 1, arr);
         else
-        { 
-            cout<<"Not Palindrome";
+        {
+            cout << "Not Palindrome";
             return;
         }
     }
     else
-        cout<<"Palindrome";
+        cout << "Palindrome";
 }
 // abcba -> abcba
 int isPalindrome(string S)
-{   int n=S.size();
-    int i=0;
-    while(i<n/2){
-        if(S[i]!=S[n-i-1]) return 0;
+{
+    int n = S.size();
+    int i = 0;
+    while (i < n / 2)
+    {
+        if (S[i] != S[n - i - 1])
+            return 0;
         i++;
     }
     return 1;
@@ -66,18 +69,17 @@ int isPalindrome(string S)
 // Fibonacci
 vector<long long> printFibb(int n)
 {
-    long long a=1;
-    long long b=1;
+    long long a = 1;
+    long long b = 1;
     vector<long long> arr;
     arr.push_back(a);
     arr.push_back(b);
-    for(int i=3;i<=n;i++)
+    for (int i = 3; i <= n; i++)
     {
         long long c = a + b;
-        a=b;
-        b=c;
+        a = b;
+        b = c;
         arr.push_back(c);
-
     }
     return arr;
 }
@@ -104,8 +106,9 @@ int solution()
     // palindrome(0,str);
     // cout<<isPalindrome(str);
     vector<long long> arr = printFibb(n);
-    for(int i=0;i<arr.size();i++){
-        cout<<arr[i]<<" ";
+    for (int i = 0; i < arr.size(); i++)
+    {
+        cout << arr[i] << " ";
     }
     return 0;
 }
