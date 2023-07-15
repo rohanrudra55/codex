@@ -1,0 +1,1 @@
+{"name":"Local: TUF","url":"/Users/alpha/Documents/Github/Codex/TUF/TUF.java","tests":[{"id":1688823816871,"input":"5\n1 2 3 4 5 \n4","output":"[1, 2, 3]"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/alpha/Documents/Github/Codex/TUF/TUF.java","group":"local","local":true}

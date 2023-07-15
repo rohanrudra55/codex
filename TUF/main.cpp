@@ -330,16 +330,151 @@ void rearrange_GFG(int arr[], int n)
     }
 }
 
+// Q6
+void MakeZeros(vector<vector<int>> &matrix)
+{
+    int n = matrix.size();
+    vector<pair<int, int>> dm;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < matrix[i].size(); j++)
+        {
+            if (matrix[i][j] == 0)
+            {
+                dm.push_back(pair<int, int>(i, j));
+
+                int sum = 0;
+                if (i != 0)
+                    sum += matrix[i - 1][j];
+                if (j != 0)
+                    sum += matrix[i][j - 1];
+                if (i != n - 1)
+                    sum += matrix[i + 1][j];
+                if (j != matrix[i].size())
+                    sum += matrix[i][j + 1];
+
+                matrix[i][j] = sum;
+            }
+        }
+    }
+    for (auto it : dm)
+    {
+        // Assuming no zeroes lies side by side
+        if (it.first > 0)
+            matrix[it.first - 1][it.second] = 0;
+        if (it.first < n - 1)
+            matrix[it.first + 1][it.second] = 0;
+        if (it.second > 0)
+            matrix[it.first][it.second - 1] = 0;
+        if (it.second < matrix[it.first].size() - 1)
+            matrix[it.first][it.second + 1] = 0;
+    }
+}
+
+// Q7
+void rotateby90(vector<vector<int>> &matrix, int n)
+{
+    int m = n;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < i; j++)
+        {
+            swap(matrix[i][j], matrix[j][i]);
+        }
+    }
+    for (int i = 0; i < n / 2; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            swap(matrix[i][j], matrix[n - 1 - i][j]);
+        }
+    }
+}
+
+// Q8
+int findK(vector<vector<int>> &a, int n, int m, int k)
+{
+    int top = 0, left = 0, right = m - 1, bottom = n - 1;
+    int cnt = 0;
+    while (left <= right && top <= bottom)
+    {
+        for (int i = left; i <= right; i++)
+        {
+            cnt++;
+            if (cnt == k)
+                return a[top][i];
+        }
+        top++;
+        for (int i = top; i <= bottom; i++)
+        {
+            cnt++;
+            if (cnt == k)
+                return a[i][right];
+        }
+        right--;
+        if (top <= bottom)
+        {
+            for (int i = right; i >= left; i--)
+            {
+                cnt++;
+                if (cnt == k)
+                    return a[bottom][i];
+            }
+            bottom--;
+        }
+        if (left <= right)
+        {
+            for (int i = bottom; i >= top; i--)
+            {
+                cnt++;
+                if (cnt == k)
+                    return a[i][left];
+            }
+            left++;
+        }
+    }
+}
+
+
+// Q9
+
+    int subarraySum(vector<int>& nums, int k) {
+        int sum=0,cnt=0;
+        map<int,int> prefixSum;
+        prefixSum[0]++;
+        for(auto num : nums)
+        {   
+            sum+=num;
+            if(prefixSum.find(sum-k)!=prefixSum.end())
+            {
+                cnt+=prefixSum[sum-k];
+            }
+            prefixSum[sum]++;
+        }
+        return cnt;
+    }
+    
 // Driver Fucntion
 int main()
 {
-    int n;
-    cin >> n;
-    int arr[n];
+    // int n;
+    // cin >> n;
+    // int arr[n];
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cin >> arr[i];
+    // } // Array
+
+    int n, m;
+    cin >> n >> m;
+    vector<vector<int>> vec2d(n, vector<int>(m, 0));
     for (int i = 0; i < n; i++)
     {
-        cin >> arr[i];
-    } // Array
+        for (int j = 0; j < m; j++)
+        {
+            cin >> vec2d[i][j];
+        }
+    }
 
     // int m; cin >> m;
     // int ar2[m]; for(int i=0; i<m; i++) { cin>>ar2[i]; }  // Array
@@ -362,11 +497,22 @@ int main()
     // cout << stockBuyAndSell(n, vec);
     // cout << maxProfit(vec);
     // rearrange(arr,n);
-    rearrange_GFG(arr, n);
+    // rearrange_GFG(arr, n);
+    MakeZeros(vec2d);
+
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cout << arr[i] << " ";
+    // } // Array
+
     for (int i = 0; i < n; i++)
     {
-        cout << arr[i] << " ";
-    } // Array
+        for (int j = 0; j < m; j++)
+        {
+            cout << vec2d[i][j] << " ";
+        }
+        cout << endl;
+    } // 2D Vector
 
     // for (auto &it : vec){ cout << it << " "; }   // Vector
     return 0;
