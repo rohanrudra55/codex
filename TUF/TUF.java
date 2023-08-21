@@ -1,18 +1,23 @@
-import java.util.*;
 
 class TUF {
-    int binarysearch(int arr[], int n, int k) {
-        int left=0,right=n-1;
+    public static void findSubstrings(String input) {
+        int left = 0;
+        int right = 0;
 
-        while(left<right){
-            int mid=left+right/2;
-            if(k>arr[mid])
-                left=mid+1;
-            else if(k<arr[mid])
-                right=mid;
-            else
-                return mid-1;
+        while (right < input.length()) {
+
+            String substring = input.substring(left, right + 1);
+            while (substring.length() > 2) {
+                left++;
+            }
+            substring = input.substring(left, right + 1);
+            System.out.println(substring);
+            right++;
         }
-        return -1;
+    }
+
+    public static void main(String[] args) {
+        String input = "abcde";
+        findSubstrings(input);
     }
 }
